@@ -7,20 +7,13 @@ import { useEffect } from 'react';
 const PostList = () => {
   const { posts, setPosts } = useContext(AppContext);
   
-  const fetchHandler = async () => {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    setPosts(response.data.slice(0, 5))
-  }
-  
-  useEffect(() => {
-    fetchHandler()
-  }, [])
+ // fetch and set posts here
+ //'https://jsonplaceholder.typicode.com/posts'
 
   return (
     <ul>
-      {posts.map((post) => (
-        <PostItem key={post.id} post={post} />
-      ))}
+        {//list of posts here
+        }
     </ul>
   );
 };
