@@ -14,6 +14,12 @@ const appReducer = (state, action) => {
         posts: [action.payload, ...state.posts],
       };
     }
+    case 'SET_POSTS': {
+      return {
+        ...state,
+        posts: action.payload,
+      };
+    }
     case 'SET_DARK_THEME': {
       return {
         ...state,
@@ -28,26 +34,26 @@ const appReducer = (state, action) => {
 
 const initialState = {
   posts: [
-    {
-      id: 1,
-      title: 'Post One',
-      body: 'This is post one, do to it as you please',
-    },
-    {
-      id: 2,
-      title: 'Post Two',
-      body: 'This is post two, do to it as you please',
-    },
-    {
-      id: 3,
-      title: 'Post Three',
-      body: 'This is post three, do to it as you please',
-    },
-    {
-      id: 4,
-      title: 'Post Four',
-      body: 'This is post four, do to it as you please',
-    },
+    // {
+    //   id: 1,
+    //   title: 'Post One',
+    //   body: 'This is post one, do to it as you please',
+    // },
+    // {
+    //   id: 2,
+    //   title: 'Post Two',
+    //   body: 'This is post two, do to it as you please',
+    // },
+    // {
+    //   id: 3,
+    //   title: 'Post Three',
+    //   body: 'This is post three, do to it as you please',
+    // },
+    // {
+    //   id: 4,
+    //   title: 'Post Four',
+    //   body: 'This is post four, do to it as you please',
+    // },
   ],
   darkTheme: false,
 };
@@ -71,6 +77,13 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const setPosts = (posts) => {
+    dispatch({
+      type: 'SET_POSTS',
+      payload: posts,
+    })
+  }
+
   const setDarkTheme = (bool) => {
     dispatch({
       type: 'SET_DARK_THEME',
@@ -85,6 +98,7 @@ export const AppProvider = ({ children }) => {
         darkTheme: state.darkTheme,
         deletePost,
         addPost,
+        setPosts,
         setDarkTheme,
       }}
     >
